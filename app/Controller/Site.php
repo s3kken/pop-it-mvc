@@ -7,7 +7,7 @@ use Src\View;
 use Src\Request;
 use Model\User;
 
-class Site
+class  Site
 {
     public function index(Request $request): string
     {
@@ -23,7 +23,7 @@ class Site
     public function signup(Request $request): string
     {
         if ($request->method==='POST' && User::create($request->all())){
-            return new View('site.signup', ['message'=>'Вы успешно зарегистрированы']);
+            app()->route->redirect('/go');
         }
         return new View('site.signup');
     }
