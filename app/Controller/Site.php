@@ -51,7 +51,8 @@ class  Site
 
     public function listTeacher(Request $request): string
     {
-        $teachers = listTeacher::all();
-        return (new View())->render('site.list_teacher', ['listTeacher' => $teachers]);
+        // $teachers = listTeacher::all();
+        // return (new View())->render('site.list_teacher', ['listTeacher' => $teachers]);
+        return new View('site.editTeacher');
     }
 }
