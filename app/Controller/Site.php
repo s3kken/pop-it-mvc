@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\listTeacher;
 use Model\Post;
 use Src\View;
 use Src\Request;
@@ -46,5 +47,11 @@ class  Site
     {
         Auth::logout();
         app()->route->redirect('/hello');
+    }
+
+    public function listTeacher(Request $request): string
+    {
+        $teachers = listTeacher::all();
+        return (new View())->render('site.list_teacher', ['listTeacher' => $teachers]);
     }
 }

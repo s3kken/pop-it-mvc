@@ -20,6 +20,7 @@
         else:
             ?>
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
+            <a href="<?= app()->route->getUrl('/list_teacher')?>">Список преподавателей</a>
         <?php
         endif;
         ?>
