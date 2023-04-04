@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Model\listTeacher;
+use Model\ListTeachers;
 use Model\Post;
 use Src\View;
 use Src\Request;
@@ -49,10 +49,10 @@ class  Site
         app()->route->redirect('/hello');
     }
 
-    public function listTeacher(Request $request): string
+    public function listTeachers(): string
     {
-        // $teachers = listTeacher::all();
-        // return (new View())->render('site.list_teacher', ['listTeacher' => $teachers]);
-        return new View('site.editTeacher');
+         $listTeachers = ListTeachers::all();
+         return (new View())->render('site.listTeachers', ['listTeachers' => $listTeachers]);
+//        return new View('site.list_teacher');
     }
 }

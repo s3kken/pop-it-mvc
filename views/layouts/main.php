@@ -20,7 +20,7 @@
         else:
             ?>
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-            <a href="<?= app()->route->getUrl('/editTeacher')?>">Список преподавателей</a>
+            <a href="<?= app()->route->getUrl('/listTeachers')?>">Редактирование преподавателей</a>
         <?php
         endif;
         ?>
@@ -33,3 +33,22 @@
 
 </body>
 </html>
+
+<style>
+    body{
+        width: 100%;
+        margin: 0;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+        background-color: rosybrown;
+        padding: 20px
+    }
+    a{
+        padding: 0 20px 0 20px;
+        font-size: 14pt;
+        color: white;
+        text-decoration: none
+    }
+</style>
