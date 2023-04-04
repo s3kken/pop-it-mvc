@@ -58,4 +58,7 @@ class Auth
         return true;
     }
 
+    public static function idRole(){
+        return self::$user->id_role ?? 0;
+    }
 }
