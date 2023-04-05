@@ -31,12 +31,12 @@
             <?php
             if (app()->auth::idRole() == 2):
                 ?>
-                <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
             <a href="<?= app()->route->getUrl('/listTeachers')?>">Список преподавателей</a>
                 <a href="<?= app()->route->getUrl('/listStudents')?>">Список студентов</a>
                 <a href="<?= app()->route->getUrl('/listGroup')?>">Список групп</a>
                 <a href="<?= app()->route->getUrl('/listDiscipline')?>">Список дисциплин</a>
                 <a href="<?= app()->route->getUrl('/statement')?>">Ведомость</a>
+                <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
             <?php endif;?>
         <?php
         endif;

@@ -1,7 +1,9 @@
+<div class="body">
+    <div class="form">
 <h2>Список видов контроля</h2>
 <h3><?= $message ?? ''; ?></h3>
 
-
+<div>
 <button>Добавить</button>
 <table>
     <tr>
@@ -21,10 +23,30 @@
             ?>
 
 </table>
+        </div>
+    </div>
+</div>
 <style>
-     tr, td{
+    .form{
+            border: solid rosybrown 2px;
+            width: 500px;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 20px 0 0 0;
+            border-radius: 10px;
+        }
+    .body{
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+    }
+    tr, td{
         border: solid rosybrown 1px;
-        color: black;
+        color: FireBrick;
     }
     h2{
         color: FireBrick;
@@ -41,6 +63,9 @@
     }
     .tdDrop{
         border: solid white 1px;
+    }
+    table{
+        margin: 10px 0 0 0;
     }
 </style>
 <?php
