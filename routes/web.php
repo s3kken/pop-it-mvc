@@ -13,3 +13,4 @@ Route::add(['GET', 'POST'], '/listGroup', [Controller\Site::class, 'listGroup'])
 Route::add(['GET', 'POST'], '/listDiscipline', [Controller\Site::class, 'listDiscipline']);
 Route::add(['GET', 'POST'], '/statement', [Controller\Site::class, 'statement']);
 Route::add(['GET', 'POST'], '/list_control', [Controller\Site::class, 'control']);
+Route::add(['GET', 'POST'], '/list_employees', [Controller\Site::class, 'User']);

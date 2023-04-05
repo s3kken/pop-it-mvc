@@ -92,5 +92,9 @@ class  Site
             return (new View())->render('site.list_control', ['control' => $control]);
     }
     //список сотрудников
-
+    public function User(): string
+    {
+            $User = User::all();
+            return (new View())->render('site.list_employees', ['User' => $User]);
+    }
 }

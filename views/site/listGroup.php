@@ -1,52 +1,50 @@
+<div class="body">
 <h2>Список групп</h2>
 <h3><?= $message ?? ''; ?></h3>
 
 <?php
     foreach($listGroup as $group){
-        echo '<div class="card">';
-            '<div>';
-            echo '<h4>' . 'Группа' . '</h4>';
-            echo '<p>' . 'id группы:' .' '. $group->idGroup . '</p>';
-            echo '<p>' . 'Семестр:' .' '. $group->semester . '</p>';
-            echo '<p>' . 'Курс:' .' '. $group->course . '</p>';
-            '</div>';
-            '<div>';
-            echo '<h4>' . 'Список студентов' . '</h4>';
-            foreach($listStudents as $student){
-                echo '<ol>';
-                if($student->idGroup == $group->idGroup)
-                    echo '<li>'. $student->surname .'</li>';
-                '</ol>';
-            }
-            '</div>';
+        echo'<div class="card">' .
+            '<div>' .
+            '<h4>' . 'Группа' . '</h4>' .
+            '<p>' . 'id группы:' .' '. $group->idGroup . '</p>' .
+            '<p>' . 'Семестр:' .' '. $group->semester . '</p>' .
+            '<p>' . 'Курс:' .' '. $group->course . '</p>' .
+            '</div>' .
+            '<div>' .
+            '<h4>' . 'Список студентов' . '</h4>' .
+            '<div>' .
+            '<ol>' ;
+                if($group->idGroup == $group->ListStudents_view->idGroup){
+                    echo '<li>'. $group->ListStudents_view->surname .'</li>';
+                }
+            echo '</ol>' .
+            '</div>' .
+            '</div>' .
         '</div>';
     }
     ?>
-<div class="card">
-    <div>
-        <h4>Группа</h4>
-        <p>Номер</p>
-        <p>Семестр</p>
-        <p>Курс</p>
-    </div>
-    <div>
-        <h4>Список студентов</h4>
-        <ol>
-            <li></li>
-        </ol>
-    </div>
-    <div>
-        <h4>Список дисциплин</h4>
-        <ol>
-            <li></li>
-        </ol>
-    </div>
 </div>
 
 <style>
+    .body{
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+    }
     .card{
-        border: solid black 1px;
+        border: solid rosybrown 1px;
         width: 500px;
+        margin: 0 0 10px 0;
+        padding: 0 0 0 20px;
+    }
+    h2, h4{
+        color: FireBrick;
+    }
+    p, li{
+        color: rosybrown;
     }
 </style>
 <?php

@@ -33,8 +33,7 @@
 <style>
 .form{
             border: solid rosybrown 2px;
-            width: 700px;
-            height: 380px;
+            padding: 30px;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -51,6 +50,7 @@
     tr, td{
         border: solid rosybrown 1px;
         color: FireBrick;
+        padding: 5px;
     }
     h2{
         color: FireBrick;
