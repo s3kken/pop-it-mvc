@@ -9,6 +9,10 @@ use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
 use Model\ListStudents;
+use Model\listGroup;
+use Model\listDiscipline;
+use Model\statement;
+use Model\Control;
 
 class  Site
 {
@@ -26,7 +30,7 @@ class  Site
     public function signup(Request $request): string
     {
         if ($request->method==='POST' && User::create($request->all())){
-            app()->route->redirect('/go');
+            app()->route->redirect('/hello');
         }
         return new View('site.signup');
     }
@@ -49,17 +53,44 @@ class  Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
-
+    //список учителей
     public function listTeachers(): string
     {
          $listTeachers = ListTeachers::all();
          return (new View())->render('site.listTeachers', ['listTeachers' => $listTeachers]);
-//        return new View('site.list_teacher');
     }
+    //список студентов
     public function listStudents(): string
     {
          $listStudents = ListStudents::all();
          return (new View())->render('site.listStudents', ['listStudents' => $listStudents]);
-//        return new View('site.list_teacher');
     }
+    //список групп
+    public function listGroup(): string
+    {
+            $listGroup = listGroup::all();
+            return (new View())->render('site.listGroup', ['listGroup' => $listGroup]);
+    }
+    //список дисциплин
+    public function listDiscipline(): string
+    {
+            $listDiscipline = listDiscipline::all();
+            return (new View())->render('site.listDiscipline', ['listDiscipline' => $listDiscipline]);
+    }
+    //ведомость
+    public function statement(): string
+    {
+            $statement = statement::all();
+            return (new View())->render('site.statement', ['statement' => $statement]);
+    }
+
+    //админ
+    //виды контроля
+    public function control(): string
+    {
+            $control = Control::all();
+            return (new View())->render('site.list_control', ['control' => $control]);
+    }
+    //список сотрудников
+
 }

@@ -3,7 +3,15 @@
 <h2>Регистрация нового пользователя</h2>
 <h3><?= $message ?? ''; ?></h3>
 <form class="login" method="post">
-    <label>Имя <br><input type="text" name="name"></label>
+    <label>
+            Роль
+        <select name="id_role" id="">
+            <option value="1">Админ</option>
+            <option value="2">Сотрудник</option>
+        </select>
+
+    </label>
+
     <label>Логин <br><input type="text" name="login"></label>
     <label>Пароль <br><input type="password" name="password"></label><br>
     <button>Зарегистрироваться</button>
