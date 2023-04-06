@@ -22,6 +22,7 @@
             <?php
             if (app()->auth::idRole() == 1):
                 ?>
+                <a href="<?= app()->route->getUrl('/signup') ?>">Добавление сотрудника</a>
                 <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
                 <a href="<?= app()->route->getUrl('/list_employees')?>">Список сотрудников</a>
                 <a href="<?= app()->route->getUrl('/list_control')?>">Виды контроля</a>

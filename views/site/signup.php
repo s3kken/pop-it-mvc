@@ -6,7 +6,11 @@
     <label>
             Роль<br>
         <select name="id_role" id="">
+        <?php
+            if (!app()->auth::idRole() == 1):
+                ?>
             <option value="1">Админ</option>
+            <?php endif;?>
             <option value="2">Сотрудник</option>
         </select>
 
