@@ -3,6 +3,7 @@
 <h2>Добавление нового сотрудника</h2>
 <h3><?= $message ?? ''; ?></h3>
 <form class="login" method="post">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label>
             Роль<br>
         <select name="id_role" id="">
