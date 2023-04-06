@@ -1,13 +1,13 @@
 <div class="body">
     <div class="form">
-<h2>Регистрация нового пользователя</h2>
+<h2>Добавление нового сотрудника</h2>
 <h3><?= $message ?? ''; ?></h3>
 <form class="login" method="post">
     <label>
             Роль<br>
         <select name="id_role" id="">
         <?php
-            if (!app()->auth::idRole() == 1):
+            if ($_SESSION['id_role'] != 1):
                 ?>
             <option value="1">Админ</option>
             <?php endif;?>
@@ -18,7 +18,7 @@
 
     <label>Логин <br><input type="text" name="login"></label>
     <label>Пароль <br><input type="password" name="password"></label><br>
-    <button>Зарегистрироваться</button>
+    <button>Добавить</button>
 </form>
     </div>
 </div>

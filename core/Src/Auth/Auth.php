@@ -23,6 +23,8 @@ class Auth
     {
         self::$user = $user;
         Session::set('id', self::$user->getId());
+        Session::set('id_role', self::$user->id_role);
+
     }
 
     //Аутентификация пользователя и вход по учетным данным
@@ -56,9 +58,5 @@ class Auth
     {
         Session::clear('id');
         return true;
-    }
-
-    public static function idRole(){
-        return self::$user->id_role ?? 0;
     }
 }

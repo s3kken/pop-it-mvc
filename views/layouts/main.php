@@ -15,12 +15,11 @@
         if (!app()->auth::check()):
             ?>
             <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-            <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
         <?php
         else:
             ?>
             <?php
-            if (app()->auth::idRole() == 1):
+            if ($_SESSION['id_role'] === 1):
                 ?>
                 <a href="<?= app()->route->getUrl('/signup') ?>">Добавление сотрудника</a>
                 <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
@@ -30,7 +29,7 @@
             <?php endif;?>
 
             <?php
-            if (app()->auth::idRole() == 2):
+            if ($_SESSION['id_role'] === 2):
                 ?>
             <a href="<?= app()->route->getUrl('/listTeachers')?>">Список преподавателей</a>
                 <a href="<?= app()->route->getUrl('/listStudents')?>">Список студентов</a>
