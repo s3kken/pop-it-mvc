@@ -1,16 +1,16 @@
 <div class="body">
-<h2>Деканат</h2>
+<h2><?= $message ?? ''; ?></h2>
 </div>
 
 <style>
-.body{
+    .body{
         flex-direction: column;
         display: flex;
         width: 100%;
         align-items: center;
 
     }
-h2{
+    h2{
         color: FireBrick;
     }
 </style>

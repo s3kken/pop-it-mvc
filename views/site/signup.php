@@ -4,7 +4,7 @@
 <h3><?= $message ?? ''; ?></h3>
 <form class="login" method="post">
     <label>
-            Роль
+            Роль<br>
         <select name="id_role" id="">
             <option value="1">Админ</option>
             <option value="2">Сотрудник</option>
@@ -20,6 +20,14 @@
 </div>
 
 <style>
+    select{
+        width: 250px;
+        height: 30px;
+        margin: 0 0 10px 0;
+        border-radius: 20px;
+        border: solid FireBrick 2px;
+        background-color: white;
+    }
     .form{
         border: solid rosybrown 2px;
         width: 500px;
