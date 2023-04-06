@@ -15,9 +15,11 @@
             '<h4>' . 'Список студентов' . '</h4>' .
             '<div>' .
             '<ol>' ;
-                if($group->idGroup == $group->ListStudents_view->idGroup){
-                    echo '<li>'. $group->ListStudents_view->surname .'</li>';
+            foreach($group->students as $student){
+                if($group->idGroup == $student->idGroup){
+                    echo '<li>'. $student->surname .'</li>';
                 }
+            }
             echo '</ol>' .
             '</div>' .
             '</div>' .

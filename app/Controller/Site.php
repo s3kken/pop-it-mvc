@@ -53,48 +53,5 @@ class  Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
-    //список учителей
-    public function listTeachers(): string
-    {
-         $listTeachers = ListTeachers::all();
-         return (new View())->render('site.listTeachers', ['listTeachers' => $listTeachers]);
-    }
-    //список студентов
-    public function listStudents(): string
-    {
-         $listStudents = ListStudents::all();
-         return (new View())->render('site.listStudents', ['listStudents' => $listStudents]);
-    }
-    //список групп
-    public function listGroup(): string
-    {
-            $listGroup = listGroup::all();
-            return (new View())->render('site.listGroup', ['listGroup' => $listGroup]);
-    }
-    //список дисциплин
-    public function listDiscipline(): string
-    {
-            $listDiscipline = listDiscipline::all();
-            return (new View())->render('site.listDiscipline', ['listDiscipline' => $listDiscipline]);
-    }
-    //ведомость
-    public function statement(): string
-    {
-            $statement = statement::all();
-            return (new View())->render('site.statement', ['statement' => $statement]);
-    }
 
-    //админ
-    //виды контроля
-    public function control(): string
-    {
-            $control = Control::all();
-            return (new View())->render('site.list_control', ['control' => $control]);
-    }
-    //список сотрудников
-    public function User(): string
-    {
-            $User = User::all();
-            return (new View())->render('site.list_employees', ['User' => $User]);
-    }
 }

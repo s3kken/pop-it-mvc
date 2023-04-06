@@ -10,8 +10,8 @@ class listGroup extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function ListStudents_view()
+    public function students()
     {
-        return $this->belongsTo(ListStudents::class, 'idGroup', 'idGroup');
+        return $this->hasMany(ListStudents::class, 'idGroup', 'idGroup');
     }
 }
