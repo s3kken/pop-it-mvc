@@ -4,14 +4,25 @@
         <h3><?= $message ?? ''; ?></h3>
 
         <form class="login" method="post">
-            <label>id студента<br><input type="text" name="idStudents"></label>
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <label>Фамилия<br><input type="text" name="surname"></label>
             <label>Имя<br><input type="text" name="name"></label>
             <label>Отчество<br><input type="text" name="patronymic"></label>
             <label>Пол<br><input type="text" name="gender"></label>
-            <label>Дата рождения<br><input type="text" name="dateOfBirth"></label>
+            <label>Дата рождения<br><input type="date" name="dateOfBirth"></label>
             <label>Адрес<br><input type="text" name="address"></label>
-            <label>id группы<br><input type="text" name="idGroup"></label><br>
+            <label>Номер группы группы<br>
+            <select name="idGroup">
+                    <?php 
+                    foreach ($groups as $group){
+                        ?>
+                            <option value="<?= $group->idGroup ?>"><?= $group->idGroup ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select>
+            <br>
             <button>Создать</button>
         </form>
     </div>
@@ -34,7 +45,7 @@
         width: 500px;
         align-items: center;
     }
-    input{
+    input, select{
         width: 250px;
         height: 30px;
         margin: 0 0 10px 0;

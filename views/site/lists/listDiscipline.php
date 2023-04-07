@@ -4,10 +4,10 @@
 <h3><?= $message ?? ''; ?></h3>
 
 <div>
-<button>Добавить</button>
+<a href="<?= app()->route->getUrl('/editAddDiscipline')?>" class="button">Добавить</a>
 <table>
     <tr>
-        <td>id дисциплины</td>
+        <td>№ дисциплины</td>
         <td>Название</td>
         <td>Количество часов</td>
     </tr>
@@ -52,7 +52,7 @@
     h2{
         color: FireBrick;
     }
-    button{
+    button, .button{
         text-align: center;
         padding: 8px 15px 8px 15px;
         font-size: 10pt;

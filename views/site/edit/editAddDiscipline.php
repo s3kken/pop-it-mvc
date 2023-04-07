@@ -4,12 +4,9 @@
         <h3><?= $message ?? ''; ?></h3>
 
         <form class="login" method="post">
-            <label>id дисциплины<br><input type="text" name="idDiscipline"></label>
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <label>Название<br><input type="text" name="title"></label>
-            <label>Курс<br><input type="text" name="course"></label>
-            <label>Семестр<br><input type="text" name="semester"></label>
             <label>Кол-во часов<br><input type="text" name="hours"></label>
-            <label>id преподавателя<br><input type="text" name="idTeacher"></label><br>
             <button>Создать</button>
         </form>
     </div>

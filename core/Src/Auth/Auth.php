@@ -60,7 +60,7 @@ class Auth
         return true;
     }
 
-        //Генерация нового токена для CSRF
+        // Генерация нового токена для CSRF
     public static function generateCSRF(): string
     {
         $token = md5(time());

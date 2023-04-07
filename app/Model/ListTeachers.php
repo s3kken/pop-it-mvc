@@ -9,4 +9,10 @@ class listTeachers extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'id_teacher',
+        'surname',
+        'name',
+        'patronymic'
+    ];
 }

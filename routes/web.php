@@ -5,7 +5,7 @@ use Src\Route;
 Route::add('GET', '/hello', [Controller\Site::class, 'hello'])
     ->middleware('auth');
 Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup'])    ->middleware('admin');
-Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login'])  ->middleware('auth');
+Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout'])    ->middleware('auth');
 Route::add(['GET', 'POST'], '/listTeachers', [Controller\Employee::class, 'listTeachers'])  ->middleware('auth');
 Route::add(['GET', 'POST'], '/listStudents', [Controller\Employee::class, 'listStudents'])    ->middleware('auth');
@@ -14,3 +14,6 @@ Route::add(['GET', 'POST'], '/listDiscipline', [Controller\Employee::class, 'lis
 Route::add(['GET', 'POST'], '/statement', [Controller\Employee::class, 'statement'])    ->middleware('auth');
 Route::add(['GET', 'POST'], '/list_control', [Controller\Admin::class, 'control'])    ->middleware('auth', 'admin');
 Route::add(['GET', 'POST'], '/list_employees', [Controller\Admin::class, 'User'])    ->middleware('auth', 'admin');
+Route::add(['GET', 'POST'], '/editAddTeacher', [Controller\Employee::class, 'addTeacher'])    ->middleware('auth');
+Route::add(['GET', 'POST'], '/editAddStudent', [Controller\Employee::class, 'addStudent'])    ->middleware('auth');
+Route::add(['GET', 'POST'], '/editAddDiscipline', [Controller\Employee::class, 'addDiscipline'])    ->middleware('auth');

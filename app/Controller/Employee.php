@@ -11,6 +11,7 @@ use Model\ListStudents;
 use Model\listGroup;
 use Model\listDiscipline;
 use Model\statement;
+use Src\Validator\Validator;
 
 class  Employee
 {
@@ -44,5 +45,85 @@ class  Employee
             $statement = statement::all();
             return (new View())->render('site.lists.statement', ['statement' => $statement]);
     }
+    //добавление учителя
+    public function addTeacher(Request $request): string
+    {
+       if ($request->method === 'POST') {
+    
+           $validator = new Validator($request->all(), [
+               'name' => ['required'],
+               'surname' => ['required'],
+               'patronymic' => ['required']
+           ], [
+               'required' => 'Поле :field пусто',
+               'unique' => 'Поле :field должно быть уникально'
+           ]);
+    
+           if($validator->fails()){
+               return new View('site.edit.editAddTeacher',
+                   ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+           }
+    
+           if (listTeachers::create($request->all())) {
+               app()->route->redirect('/listTeachers');
+           }
+       }
+       return new View('site.edit.editAddTeacher');
+    }
 
+    //Добавление студента
+    public function addStudent(Request $request): string
+    {
+        $groups = listGroup::all();
+       if ($request->method === 'POST') {
+    
+           $validator = new Validator($request->all(), [
+               'name' => ['required'],
+               'surname' => ['required'],
+               'patronymic' => ['required'],
+               'gender' => ['required'],
+               'dateOfBirth' => ['required'],
+               'address' => ['required'],
+           ], [
+               'required' => 'Поле :field пусто',
+               'unique' => 'Поле :field должно быть уникально'
+           ]);
+    
+           if($validator->fails()){
+               return new View('site.edit.editAddStudent',
+                   ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+           }
+    
+           if (listStudents::create($request->all())) {
+               app()->route->redirect('/listStudents');
+           }
+       }
+       return new View('site.edit.editAddStudent', ['groups' => $groups]);
+    }
+
+
+    //Добавление дисциплины
+    public function addDiscipline(Request $request): string
+    {
+       if ($request->method === 'POST') {
+    
+           $validator = new Validator($request->all(), [
+               'title' => ['required'],
+               'hours' => ['required']
+           ], [
+               'required' => 'Поле :field пусто',
+               'unique' => 'Поле :field должно быть уникально'
+           ]);
+    
+           if($validator->fails()){
+               return new View('site.edit.editAddDiscipline',
+                   ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+           }
+    
+           if (listDiscipline::create($request->all())) {
+               app()->route->redirect('/listDiscipline');
+           }
+       }
+       return new View('site.edit.editAddDiscipline');
+    }
 }

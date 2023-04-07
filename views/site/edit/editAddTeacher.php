@@ -4,11 +4,11 @@
 <h3><?= $message ?? ''; ?></h3>
 
 <form class="login" method="post">
-    <label>id преподавателя<br><input type="text" name="idTeacher"></label>
+<input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label>Фамилия<br><input type="text" name="surname"></label>
     <label>Имя<br><input type="text" name="name"></label>
     <label>Отчество<br><input type="text" name="patronymic"></label>
-    <label>id дисциплины<br><input type="text" name="idDiscipline"></label><br>
+    
     <button>Создать</button>
 </form>
 </div>
