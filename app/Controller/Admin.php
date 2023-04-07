@@ -7,6 +7,7 @@ use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
 use Model\Control;
+use Src\Validator\Validator;
 
 class  Admin
 {
@@ -22,5 +23,28 @@ class  Admin
     {
             $User = User::all();
             return (new View())->render('site.lists.list_employees', ['User' => $User]);
+    }
+
+    public function addControl(Request $request): string
+    {
+       if ($request->method === 'POST') {
+    
+           $validator = new Validator($request->all(), [
+               'title' => ['required']
+           ], [
+               'required' => 'Поле :field пусто',
+               'unique' => 'Поле :field должно быть уникально'
+           ]);
+    
+           if($validator->fails()){
+               return new View('site.edit.editAddControl',
+                   ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+           }
+    
+           if (Control::create($request->all())) {
+               app()->route->redirect('/list_control');
+           }
+       }
+       return new View('site.edit.editAddControl');
     }
 }

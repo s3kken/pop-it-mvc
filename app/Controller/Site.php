@@ -28,7 +28,6 @@ class  Site
        if ($request->method === 'POST') {
     
            $validator = new Validator($request->all(), [
-               'name' => ['required'],
                'login' => ['required', 'unique:users,login'],
                'password' => ['required']
            ], [
@@ -42,7 +41,7 @@ class  Site
            }
     
            if (User::create($request->all())) {
-               app()->route->redirect('/login');
+               app()->route->redirect('/list_employees');
            }
        }
        return new View('site.signup');

@@ -17,3 +17,5 @@ Route::add(['GET', 'POST'], '/list_employees', [Controller\Admin::class, 'User']
 Route::add(['GET', 'POST'], '/editAddTeacher', [Controller\Employee::class, 'addTeacher'])    ->middleware('auth');
 Route::add(['GET', 'POST'], '/editAddStudent', [Controller\Employee::class, 'addStudent'])    ->middleware('auth');
 Route::add(['GET', 'POST'], '/editAddDiscipline', [Controller\Employee::class, 'addDiscipline'])    ->middleware('auth');
+Route::add(['GET', 'POST'], '/editAddStatement', [Controller\Employee::class, 'addStatement'])    ->middleware('auth');
+Route::add(['GET', 'POST'], '/editAddControl', [Controller\Admin::class, 'addControl'])    ->middleware('auth', 'admin');

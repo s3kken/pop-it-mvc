@@ -22,7 +22,6 @@
             if ($_SESSION['id_role'] === 1):
                 ?>
                 <a href="<?= app()->route->getUrl('/signup') ?>">Добавление сотрудника</a>
-                <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
                 <a href="<?= app()->route->getUrl('/list_employees')?>">Список сотрудников</a>
                 <a href="<?= app()->route->getUrl('/list_control')?>">Виды контроля</a>
 
@@ -36,8 +35,9 @@
                 <a href="<?= app()->route->getUrl('/listGroup')?>">Список групп</a>
                 <a href="<?= app()->route->getUrl('/listDiscipline')?>">Список дисциплин</a>
                 <a href="<?= app()->route->getUrl('/statement')?>">Ведомость</a>
-                <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
+
             <?php endif;?>
+            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
         <?php
         endif;
         ?>
@@ -60,7 +60,8 @@
         display: flex;
         justify-content: center;
         background-color: rosybrown;
-        padding: 20px
+        padding: 20px;
+        
     }
     a{
         padding: 0 20px 0 20px;

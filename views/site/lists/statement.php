@@ -5,19 +5,19 @@
 
 
 <div>
-<button>Добавить</button>
+<a href="<?= app()->route->getUrl('/editAddStatement')?>" class="button">Добавить</a>
 <table>
     <tr>
-        <td>id студента</td>
-        <td>id вида контроля</td>
-        <td>id дисциплины</td>
+        <td>Cтудент</td>
+        <td>Вид контроля</td>
+        <td>Дисциплина</td>
         <td>Оценка</td>
     </tr>
     <?php
             foreach ($statement as $state) {
                 echo '<tr>';
-                echo '<td>' . $state->idStudent . '</td>';
-                echo '<td>' . $state->id_control. '</td>';
+                echo '<td>' . $state->titleStudents->surname . '</td>';
+                echo '<td>' . $state->titleControl->title. '</td>';
                 echo '<td>' . $state->idDisciplineGroup . '</td>';
                 echo '<td>' . $state->grade . '</td>';
                 echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
@@ -56,7 +56,7 @@
     h2{
         color: FireBrick;
     }
-    button{
+    button, .button{
         text-align: center;
         padding: 8px 15px 8px 15px;
         font-size: 10pt;

@@ -4,10 +4,42 @@
         <h3><?= $message ?? ''; ?></h3>
 
         <form method="post" class="login">
-            <label>id студента<br><input type="text" name="loginEmployees"></label>
-            <label>id вида контроля<br><input type="text" name="passwordEmployees"></label>
-            <label>id дисциплины<br><input type="text" name="loginEmployees"></label>
-            <label>Оценка<br><input type="text" name="passwordEmployees"></label><br>
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <label>Cтудент<br>
+            <select name="idStudent">
+                    <?php 
+                    foreach ($studentStatement as $state){
+                        ?>
+                            <option value="<?= $state->idStudent ?>"><?= $state->surname ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select></label>
+
+            <label>Вид контроля<br>
+            <select name="id_control">
+                    <?php 
+                    foreach ($controlStatement as $control){
+                        ?>
+                            <option value="<?= $control->id_control ?>"><?= $control->title ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select></label>
+            <label>id дисциплины<br>
+            <select name="idDisciplineGroup">
+                    <?php 
+                    foreach ($discGroupStatement as $discGr){
+                        ?>
+                            <option value="<?= $discGr->idDisciplineGroup ?>"><?= $discGr->idDisciplineGroup ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select></label>
+            <label>Оценка<br><input type="text" name="grade"></label><br>
             <button>Создать</button>
         </form>
     </div>
@@ -30,7 +62,7 @@
         width: 500px;
         align-items: center;
     }
-    input{
+    input, select{
         width: 250px;
         height: 30px;
         margin: 0 0 10px 0;

@@ -4,8 +4,8 @@
         <h3><?= $message ?? ''; ?></h3>
 
         <form method="post" class="login">
-            <label>id вида контроля<br><input type="text" name="idControl"></label>
-            <label>Название<br><input type="text" name="nameControl"></label><br>
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <label>Название<br><input type="text" name="title"></label><br>
             <button>Создать</button>
         </form>
     </div>

@@ -12,6 +12,8 @@ use Model\listGroup;
 use Model\listDiscipline;
 use Model\statement;
 use Src\Validator\Validator;
+use Model\Control;
+use Model\DisciplineGroup;
 
 class  Employee
 {
@@ -42,8 +44,9 @@ class  Employee
     //ведомость
     public function statement(): string
     {
+            $titleDisc = listDiscipline::all();
             $statement = statement::all();
-            return (new View())->render('site.lists.statement', ['statement' => $statement]);
+            return (new View())->render('site.lists.statement', ['statement' => $statement, 'titleDisc' => $titleDisc]);
     }
     //добавление учителя
     public function addTeacher(Request $request): string
@@ -51,7 +54,7 @@ class  Employee
        if ($request->method === 'POST') {
     
            $validator = new Validator($request->all(), [
-               'name' => ['required'],
+               'id_role' => ['required'],
                'surname' => ['required'],
                'patronymic' => ['required']
            ], [
@@ -125,5 +128,35 @@ class  Employee
            }
        }
        return new View('site.edit.editAddDiscipline');
+    }
+
+    //добавление ведомости
+    public function addStatement(Request $request): string
+    {
+        $studentStatement = listStudents::all();
+        $controlStatement = Control::all();
+        $discGroupStatement = DisciplineGroup::all();
+       if ($request->method === 'POST') {
+    
+           $validator = new Validator($request->all(), [
+               'idStudent' => ['required'],
+               'id_control' => ['required'],
+               'idDisciplineGroup' => ['required'],
+               'grade' => ['required'],
+           ], [
+               'required' => 'Поле :field пусто',
+               'unique' => 'Поле :field должно быть уникально'
+           ]);
+    
+           if($validator->fails()){
+               return new View('site.edit.editAddStatement',
+                   ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+           }
+    
+           if (statement::create($request->all())) {
+               app()->route->redirect('/statement');
+           }
+       }
+       return new View('site.edit.editAddStatement', ['studentStatement' => $studentStatement, 'controlStatement' => $controlStatement, 'discGroupStatement' => $discGroupStatement]);
     }
 }

@@ -4,22 +4,17 @@
 <h3><?= $message ?? ''; ?></h3>
 
 <div>
-<button>Добавить</button>
 <table>
     <tr>
         <td>id сотрудника</td>
-        <td>id роли</td>
         <td>Логин</td>
-        <td>Пароль</td>
     </tr>
     <?php
             foreach ($User as $us) {
                 if($us->id_role == 2){
                 echo '<tr>';
                 echo '<td>' . $us->id . '</td>';
-                echo '<td>' . $us->id_role . '</td>';
                 echo '<td>' . $us->login . '</td>';
-                echo '<td>' . $us->password . '</td>';
                 echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
                 echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
