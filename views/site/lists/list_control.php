@@ -15,8 +15,6 @@
                 echo '<tr>';
                 echo '<td>' . $cont->id_control . '</td>';
                 echo '<td>' . $cont->title . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
 
             }

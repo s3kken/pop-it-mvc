@@ -1,6 +1,6 @@
 <div class="body">
     <div class="form">
-        <h2>Добавление и редактирование сотрудника</h2>
+        <h2>Добавление сотрудника</h2>
         <h3><?= $message ?? ''; ?></h3>
 
         <form method="post" class="login">

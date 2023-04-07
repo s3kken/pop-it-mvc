@@ -19,3 +19,4 @@ Route::add(['GET', 'POST'], '/editAddStudent', [Controller\Employee::class, 'add
 Route::add(['GET', 'POST'], '/editAddDiscipline', [Controller\Employee::class, 'addDiscipline'])    ->middleware('auth');
 Route::add(['GET', 'POST'], '/editAddStatement', [Controller\Employee::class, 'addStatement'])    ->middleware('auth');
 Route::add(['GET', 'POST'], '/editAddControl', [Controller\Admin::class, 'addControl'])    ->middleware('auth', 'admin');
+Route::add(['GET', 'POST'], '/editDiscipline', [Controller\Employee::class, 'editDiscipline'])->middleware('auth');

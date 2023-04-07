@@ -19,8 +19,6 @@
                 echo '<td>' . $teacher->surname . '</td>';
                 echo '<td>' . $teacher->name . '</td>';
                 echo '<td>' . $teacher->patronymic . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
 
             }

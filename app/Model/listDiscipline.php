@@ -11,7 +11,7 @@ class listDiscipline extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_discipline',
+        'id',
         'title',
         'hours'
     ];

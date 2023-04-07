@@ -159,4 +159,31 @@ class  Employee
        }
        return new View('site.edit.editAddStatement', ['studentStatement' => $studentStatement, 'controlStatement' => $controlStatement, 'discGroupStatement' => $discGroupStatement]);
     }
+
+    //редактирование дисциплины
+    public function editDiscipline(Request $request): string
+    {
+        $disciplines = listDiscipline::where('id', $request->id)->get();
+        if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), [
+                'title' => ['required'],
+                'hours' => ['required']
+            ], [
+                'required' => 'Поле :field пусто',
+            ]);
+
+            if($validator->fails()){
+                return new View('site.editDiscipline',
+                ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            } else {
+                $disciplines[0]->title = $request->title;
+                $disciplines[0]->hours = $request->hours;
+                $disciplines[0]->save();
+                app()->route->redirect('/listDiscipline');
+            }
+        }
+        return new View('site.editDiscipline', [ 'disciplines' => $disciplines ]);
+
+    }
 }

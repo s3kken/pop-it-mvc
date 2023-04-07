@@ -1,29 +1,26 @@
 <div class="body">
-<div class="form">
-<h2>Добавление преподавателя</h2>
-<h3><?= $message ?? ''; ?></h3>
+    <div class="form">
+        <h2>Добавление и редактирование дисциплины</h2>
+        <h3><?= $message ?? ''; ?></h3>
 
-<form class="login" method="post">
-<input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-    <label>Фамилия<br><input type="text" name="surname"></label>
-    <label>Имя<br><input type="text" name="name"></label>
-    <label>Отчество<br><input type="text" name="patronymic"></label>
-    
-    <button>Создать</button>
-</form>
-</div>
+        <form class="login" method="post">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <label>Название<br><input type="text" name="title" value="<?= $disciplines[0]->title?>"></label>
+            <label>Кол-во часов<br><input type="text" name="hours" value="<?= $disciplines[0]->hours?>"></label>
+            <button>Создать</button>
+        </form>
+    </div>
 </div>
 
 <style>
-
     .form{
         border: solid rosybrown 2px;
         width: 500px;
-        height: 560px;
+        height: 650px;
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin: 100px 0 0 0;
+        margin: 50px 0 0 0;
         border-radius: 10px;
     }
     .login{

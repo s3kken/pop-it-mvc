@@ -27,8 +27,6 @@
                 echo '<td>' . $student->dateOfBirth . '</td>';
                 echo '<td>' . $student->address . '</td>';
                 echo '<td>' . $student->idGroup . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
 
             }

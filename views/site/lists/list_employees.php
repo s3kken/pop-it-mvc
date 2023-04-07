@@ -15,8 +15,6 @@
                 echo '<tr>';
                 echo '<td>' . $us->id . '</td>';
                 echo '<td>' . $us->login . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
                 }
             }

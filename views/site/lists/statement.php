@@ -20,8 +20,6 @@
                 echo '<td>' . $state->titleControl->title. '</td>';
                 echo '<td>' . $state->idDisciplineGroup . '</td>';
                 echo '<td>' . $state->grade . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
 
             }

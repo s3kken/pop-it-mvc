@@ -13,13 +13,14 @@
     </tr>
     <?php
             foreach ($listDiscipline as $discipline) {
-                echo '<tr>';
-                echo '<td>' . $discipline->id_discipline . '</td>';
-                echo '<td>' . $discipline->title . '</td>';
-                echo '<td>' . $discipline->hours . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
-                '</tr>';
+                ?>
+                <tr>
+                <td> <?= $discipline->id?> </td>
+                <td> <?= $discipline->title?> </td>
+                <td> <?= $discipline->hours ?></td>
+                <td class="tdDrop"><a href="<?= app()->route->getUrl("/editDiscipline?id=$discipline->id") ?>" class="button">Редактировать</a></td>
+                </tr>
+                <?php
             }
             ?>
 
@@ -54,7 +55,7 @@
     }
     button, .button{
         text-align: center;
-        padding: 8px 15px 8px 15px;
+        padding: 8px 15px 0px 15px;
         font-size: 10pt;
         background-color: rosybrown;
         color: white;

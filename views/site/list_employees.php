@@ -20,8 +20,6 @@
                 echo '<td>' . $us->id_role . '</td>';
                 echo '<td>' . $us->login . '</td>';
                 echo '<td>' . $us->password . '</td>';
-                echo '<td class="tdDrop">' . '<button>Ред.</button>' . '</td>';
-                echo '<td class="tdDrop">' . '<button>Уд.</button>' . '</td>';
                 '</tr>';
                 }
             }

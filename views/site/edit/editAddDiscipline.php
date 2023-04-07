@@ -1,6 +1,6 @@
 <div class="body">
     <div class="form">
-        <h2>Добавление и редактирование дисциплины</h2>
+        <h2>Добавление дисциплины</h2>
         <h3><?= $message ?? ''; ?></h3>
 
         <form class="login" method="post">
