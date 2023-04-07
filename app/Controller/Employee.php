@@ -14,6 +14,7 @@ use Model\statement;
 use Src\Validator\Validator;
 use Model\Control;
 use Model\DisciplineGroup;
+use Model\Course;
 
 class  Employee
 {
@@ -24,10 +25,17 @@ class  Employee
          return (new View())->render('site.lists.listTeachers', ['listTeachers' => $listTeachers]);
     }
     //список студентов
-    public function listStudents(): string
+    public function listStudents(Request $request): string
     {
          $listStudents = ListStudents::all();
+         if($request->method === "GET"){
          return (new View())->render('site.lists.listStudents', ['listStudents' => $listStudents]);
+         }
+         elseif($request->method === "POST" && $request->get("type_form") == "search_student"){
+            $listStudents = ListStudents::where("surname", "=", $request->get("search"))->get();
+            return (new View())->render('site.lists.listStudents', ['listStudents' => $listStudents]);
+        }
+
     }
     //список групп
     public function listGroup(): string
@@ -36,17 +44,30 @@ class  Employee
             return (new View())->render('site.lists.listGroup', ['listGroup' => $listGroup]);
     }
     //список дисциплин
-    public function listDiscipline(): string
+    public function listDiscipline(Request $request): string
     {
+            $cour = Course::all();
             $listDiscipline = listDiscipline::all();
-            return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline]);
+            if($request->method === "GET"){
+            return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour]);
+            }
+            elseif($request->method === "POST" && $request->get("type_form") == "filter_disc"){
+                $listDiscipline = listDiscipline::where("course", "=", $request->get("course"))->get();
+                return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour]);
+            }
     }
     //ведомость
-    public function statement(): string
+    public function statement(Request $request): string
     {
-            $titleDisc = listDiscipline::all();
+            $discGr = DisciplineGroup::all();
             $statement = statement::all();
-            return (new View())->render('site.lists.statement', ['statement' => $statement, 'titleDisc' => $titleDisc]);
+            if($request->method === "GET"){
+                return (new View())->render('site.lists.statement', ['statement' => $statement, 'discGr' => $discGr]);
+            }
+            elseif($request->method === "POST" && $request->get("type_form") == "filter_statement"){
+                $statement = statement::where("idDisciplineGroup", "=", $request->get("idDisciplineGroup"))->get();
+                return (new View())->render('site.lists.statement', ['statement' => $statement, 'discGr' => $discGr]);
+            }
     }
     //добавление учителя
     public function addTeacher(Request $request): string
@@ -163,12 +184,14 @@ class  Employee
     //редактирование дисциплины
     public function editDiscipline(Request $request): string
     {
+        $courses = Course::all();
         $disciplines = listDiscipline::where('id', $request->id)->get();
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
                 'title' => ['required'],
-                'hours' => ['required']
+                'hours' => ['required'],
+                'course' => ['required'],
             ], [
                 'required' => 'Поле :field пусто',
             ]);
@@ -179,11 +202,15 @@ class  Employee
             } else {
                 $disciplines[0]->title = $request->title;
                 $disciplines[0]->hours = $request->hours;
+                $disciplines[0]->course = $request->course;
                 $disciplines[0]->save();
                 app()->route->redirect('/listDiscipline');
             }
         }
-        return new View('site.editDiscipline', [ 'disciplines' => $disciplines ]);
+        return new View('site.editDiscipline', [ 'disciplines' => $disciplines, 'courses' => $courses ]);
 
     }
+
+    //выбор ведомости по id дисциплины группы
+
 }

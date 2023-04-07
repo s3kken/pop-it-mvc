@@ -26,6 +26,21 @@
             ?>
 
 </table>
+<form method="post" class="login">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+    <input name="type_form" type="hidden" value="filter_statement"/>
+    <select name="idDisciplineGroup">
+        <?php
+        foreach($discGr as $state){
+        ?>
+         <option value="<?= $state->idDisciplineGroup ?>"><?= $state->idDisciplineGroup ?></option>
+        <?php } ?>
+        <!-- <option value="1">1</option> -->
+        <!-- <option value="2">2</option> -->
+    </select>
+            <button type="submit">Найти</button><br>
+        </form>
+
 </div>
     </div>
 </div>

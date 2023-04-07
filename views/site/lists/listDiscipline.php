@@ -10,6 +10,7 @@
         <td>№ дисциплины</td>
         <td>Название</td>
         <td>Количество часов</td>
+        <td>Курс</td>
     </tr>
     <?php
             foreach ($listDiscipline as $discipline) {
@@ -18,6 +19,7 @@
                 <td> <?= $discipline->id?> </td>
                 <td> <?= $discipline->title?> </td>
                 <td> <?= $discipline->hours ?></td>
+                <td> <?= $discipline->course ?></td>
                 <td class="tdDrop"><a href="<?= app()->route->getUrl("/editDiscipline?id=$discipline->id") ?>" class="button">Редактировать</a></td>
                 </tr>
                 <?php
@@ -25,6 +27,20 @@
             ?>
 
 </table>
+<form method="post" class="login">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+    <input name="type_form" type="hidden" value="filter_disc"/>
+    <select name="course">
+        <?php
+        foreach($cour as $c){
+        ?>
+         <option value="<?= $c->id ?>"><?= $c->id ?></option>
+        <?php } ?>
+        <!-- <option value="1">1</option> -->
+        <!-- <option value="2">2</option> -->
+    </select>
+            <button type="submit">Найти</button><br>
+        </form>
 </div>
     </div>
 </div>
