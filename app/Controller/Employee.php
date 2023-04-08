@@ -15,6 +15,7 @@ use Src\Validator\Validator;
 use Model\Control;
 use Model\DisciplineGroup;
 use Model\Course;
+use Model\Semester;
 
 class  Employee
 {
@@ -46,14 +47,19 @@ class  Employee
     //список дисциплин
     public function listDiscipline(Request $request): string
     {
+            $sem = Semester::all();
             $cour = Course::all();
             $listDiscipline = listDiscipline::all();
             if($request->method === "GET"){
-            return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour]);
+            return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour, 'sem' => $sem]);
             }
             elseif($request->method === "POST" && $request->get("type_form") == "filter_disc"){
                 $listDiscipline = listDiscipline::where("course", "=", $request->get("course"))->get();
-                return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour]);
+                return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour, 'sem' => $sem]);
+            }
+            elseif($request->method === "POST" && $request->get("type_form") == "filter_sem"){
+                $listDiscipline = listDiscipline::where("semester", "=", $request->get("semester"))->get();
+                return (new View())->render('site.lists.listDiscipline', ['listDiscipline' => $listDiscipline, 'cour' => $cour, 'sem' => $sem]);
             }
     }
     //ведомость
@@ -75,7 +81,6 @@ class  Employee
        if ($request->method === 'POST') {
     
            $validator = new Validator($request->all(), [
-               'id_role' => ['required'],
                'surname' => ['required'],
                'patronymic' => ['required']
            ], [
@@ -129,6 +134,9 @@ class  Employee
     //Добавление дисциплины
     public function addDiscipline(Request $request): string
     {
+
+        $addCours = Course::all();
+        $addSemester = Semester::all();
        if ($request->method === 'POST') {
     
            $validator = new Validator($request->all(), [
@@ -148,7 +156,7 @@ class  Employee
                app()->route->redirect('/listDiscipline');
            }
        }
-       return new View('site.edit.editAddDiscipline');
+       return new View('site.edit.editAddDiscipline', ['addCours' => $addCours, 'addSemester' => $addSemester]);
     }
 
     //добавление ведомости
@@ -184,6 +192,7 @@ class  Employee
     //редактирование дисциплины
     public function editDiscipline(Request $request): string
     {
+        $semesters = Semester::all();
         $courses = Course::all();
         $disciplines = listDiscipline::where('id', $request->id)->get();
         if ($request->method === 'POST') {
@@ -192,6 +201,7 @@ class  Employee
                 'title' => ['required'],
                 'hours' => ['required'],
                 'course' => ['required'],
+                'semester' => ['required'],
             ], [
                 'required' => 'Поле :field пусто',
             ]);
@@ -203,11 +213,12 @@ class  Employee
                 $disciplines[0]->title = $request->title;
                 $disciplines[0]->hours = $request->hours;
                 $disciplines[0]->course = $request->course;
+                $disciplines[0]->semester = $request->semester;
                 $disciplines[0]->save();
                 app()->route->redirect('/listDiscipline');
             }
         }
-        return new View('site.editDiscipline', [ 'disciplines' => $disciplines, 'courses' => $courses ]);
+        return new View('site.editDiscipline', [ 'disciplines' => $disciplines, 'courses' => $courses, 'semesters' => $semesters]);
 
     }
 

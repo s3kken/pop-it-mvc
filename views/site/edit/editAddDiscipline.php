@@ -7,6 +7,28 @@
         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <label>Название<br><input type="text" name="title"></label>
             <label>Кол-во часов<br><input type="text" name="hours"></label>
+            <label>Курс<br>
+            <select name="course" class="input">
+                    <?php 
+                    foreach ($addCours as $cours){
+                        ?>
+                            <option value="<?= $cours->id ?>"><?= $cours->id ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select></label>
+            <label>Семестр<br>
+            <select name="semester" class="input">
+                    <?php 
+                    foreach ($addSemester as $semest){
+                        ?>
+                            <option value="<?= $semest->id ?>"><?= $semest->id ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select></label>
             <button>Создать</button>
         </form>
     </div>
@@ -29,7 +51,7 @@
         width: 500px;
         align-items: center;
     }
-    input{
+    input, .input{
         width: 250px;
         height: 30px;
         margin: 0 0 10px 0;

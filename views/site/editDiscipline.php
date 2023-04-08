@@ -1,6 +1,6 @@
 <div class="body">
     <div class="form">
-        <h2>Добавление и редактирование дисциплины</h2>
+        <h2>редактирование дисциплины</h2>
         <h3><?= $message ?? ''; ?></h3>
 
         <form class="login" method="post">
@@ -13,6 +13,17 @@
                     foreach ($courses as $cours){
                         ?>
                             <option value="<?= $cours->id ?>"><?= $cours->id ?></option>
+                        <?php
+                    }
+                    ?>
+                    
+            </select></label>
+            <label>Cеместр<br>
+            <select name="semester" class="input">
+                    <?php 
+                    foreach ($semesters as $sem){
+                        ?>
+                            <option value="<?= $sem->id ?>"><?= $sem->id ?></option>
                         <?php
                     }
                     ?>

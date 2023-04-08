@@ -5,16 +5,9 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class listDiscipline extends Model
+class Semester extends Model
 {
     use HasFactory;
     public $timestamps = false;
 
-    protected $fillable = [
-        'id',
-        'title',
-        'hours',
-        'course',
-        'semester'
-    ];
 }

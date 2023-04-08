@@ -29,7 +29,7 @@
 <form method="post" class="login">
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <input name="type_form" type="hidden" value="filter_statement"/>
-    <select name="idDisciplineGroup">
+    <label>Сортировка по номеру дисциплины<br><select name="idDisciplineGroup">
         <?php
         foreach($discGr as $state){
         ?>
@@ -37,7 +37,7 @@
         <?php } ?>
         <!-- <option value="1">1</option> -->
         <!-- <option value="2">2</option> -->
-    </select>
+    </select></label>
             <button type="submit">Найти</button><br>
         </form>
 
@@ -45,7 +45,7 @@
     </div>
 </div>
 <style>
-.form{
+    .form{
             border: solid rosybrown 2px;
             padding: 30px;
             display: flex;
@@ -61,6 +61,13 @@
         align-items: center;
 
     }
+    select{
+        width: 150px;
+        height: 30px;
+        margin: 0 0 10px 0;
+        border-radius: 20px;
+        border: solid FireBrick 2px;
+    }
     tr, td{
         border: solid rosybrown 1px;
         color: FireBrick;
@@ -68,6 +75,10 @@
     }
     h2{
         color: FireBrick;
+    }
+    label{
+        color: rosybrown;
+        font-size: 14pt;
     }
     button, .button{
         text-align: center;

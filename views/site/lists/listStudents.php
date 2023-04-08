@@ -43,9 +43,8 @@
     </div>
 </div>
 <style>
-.form{
+    .form{
             border: solid rosybrown 2px;
-            
             padding: 30px;
             display: flex;
             align-items: center;
@@ -53,6 +52,13 @@
             margin: 20px 0 0 0;
             border-radius: 10px;
         }
+    input{
+        width: 200px;
+        height: 30px;
+        margin: 0 0 10px 0;
+        border-radius: 20px;
+        border: solid FireBrick 2px;
+    }
     .body{
         flex-direction: column;
         display: flex;
